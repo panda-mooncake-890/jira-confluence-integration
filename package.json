@@ -1,0 +1,16 @@
+{
+  "name": "jira-confluence-webhook-relay",
+  "version": "1.0.0",
+  "description": "Webhook relay to forward Jira events to GitHub Actions",
+  "main": "webhook-relay.js",
+  "scripts": {
+    "start": "node webhook-relay.js"
+  },
+  "dependencies": {
+    "smee-client": "^2.0.0",
+    "axios": "^1.6.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
