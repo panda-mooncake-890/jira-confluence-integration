@@ -1,0 +1,31 @@
+.github/workflows/jira-webhook.yml
+name: Update Confluence on Jira Status Change
+
+on:
+  repository_dispatch:
+    types: [jira-status-updated]
+
+jobs:
+  update-confluence:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install requests
+      
+      - name: Process Jira webhook and update Confluence
+        env:
+          ATLASSIAN_EMAIL: ${{ secrets.ATLASSIAN_EMAIL }}
+          ATLASSIAN_API_TOKEN: ${{ secrets.ATLASSIAN_API_TOKEN }}
+        run: |
+          python .github/scripts/update_confluence.py
+        shell: bash
