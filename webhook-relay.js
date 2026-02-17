@@ -1,3 +1,4 @@
+require('dotenv').config();
 /**
  * Webhook Relay using smee.io
  * 
