@@ -45,6 +45,7 @@ const server = http.createServer(async (req, res) => {
     req.on('end', async () => {
       try {
         const payload = JSON.parse(body);
+        console.log('Full payload:', JSON.stringify(payload, null, 2));
         
         console.log('Received webhook from Jira');
         console.log('Webhook event:', payload.webhookEvent);
