@@ -35,7 +35,7 @@ const events = smee.start();
 const http = require('http');
 
 const server = http.createServer(async (req, res) => {
-  if (req.method === 'POST' && req.url === '/webhook') {
+  if (req.method === 'POST' && req.url.startsWith('/webhook')) {
     let body = '';
     
     req.on('data', chunk => {
